@@ -60,7 +60,7 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - `group_report.md` mục 2 (pitch, cluster, OST, chấm điểm, lý do chọn/loại) và mục 3 (assumption map, bộ câu hỏi, interview snapshot, survey, nhóm đã sửa gì).
 - `group_report.md` mục 9, 10 và các chỉnh sửa ở mục 7 (Success Metric v1).
 - Commit của tài khoản [sybui2004](https://github.com/sybui2004) trên repo nhóm.
-- Báo cáo cá nhân: `report/individual/2A202604002_BuiThaiSy.md`.
+- Báo cáo cá nhân: `report/individual/202604002_BuiThaiSy.md`.
 
 **Điều mình học được từ phần nhóm:**
 
@@ -69,6 +69,29 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Phản biện giúp bài chặt hơn: câu hỏi "Google Maps và hỏi bạn bè đã đủ chưa" buộc nhóm chỉ ra khoảng trống thật là hai nguồn này không ghép được với nhau, và giữ lại phương án không dùng AI để quay về khi cần.
 - Quyết định nên dựa trên ngưỡng đo được: nhóm chọn Go cho pilot nhỏ kèm ngưỡng dừng cụ thể, thay vì tin vào cảm giác rằng ý tưởng hay.
 
+### PhamLyNgocDuc-2A202603991
+
+**Phần việc phụ trách:**
+
+- Phụ trách chính CP6 — Quyết định, gồm tổng hợp bốn rủi ro, trình bày căn cứ cho quyết định của nhóm và xác định ngưỡng dừng của pilot.
+- Tham gia trình bày và phản biện các đề xuất ở CP3 — Hội tụ nhóm.
+
+**Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
+
+- Ở CP3, mình trình bày ba vấn đề về xác định nội dung ôn cuối kỳ, chỉnh CV theo từng JD và nhận phản hồi cho bài IELTS Writing. Mình cũng đặt hai câu hỏi phản biện về việc hỏi bạn bè hoặc môi giới khi tìm phòng trọ và việc dùng bộ nhận xét mẫu khi chấm bài lab.
+- Ở CP6, mình tổng hợp kết quả kiểm chứng vào bảng đánh giá Value, Usability, Feasibility và Viability. Mình trình bày lý do nhóm chọn Go cho pilot Workflow bán thủ công trong 2 tuần với 5 nhóm tham gia, đồng thời ghi rõ khi nào cần kiểm chứng thêm, quay về Rule hoặc No AI, hoặc dừng để xem lại bài toán.
+
+**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
+
+- group_report.md, mục 2.1 — Pitch (CP3): Các dòng #2, #6 và #10 ghi ba vấn đề mình trình bày và các câu phản biện mình nhận được. Các dòng #4 và #8 ghi hai câu phản biện mình đặt cho Triết và Ninh. Xem mục 2.1
+- group_report.md, mục 8.1 và 8.2 — Quyết định (CP6): Mục 8.1 ghi bảng đánh giá bốn rủi ro mình phụ trách. Mục 8.2 ghi căn cứ cho quyết định Go của nhóm, kế hoạch pilot 2 tuần và các ngưỡng dừng. Xem mục 8.1–8.2
+- Commit của tài khoản [Ducbaynao](https://github.com/Ducbaynao) trên repo nhóm.
+- Báo cáo cá nhân: `report/individual/202603991_PhamLyNgocDuc.md`.
+
+**Điều mình học được từ phần nhóm:**
+
+- Mình hiểu rõ hơn sự khác nhau giữa có bằng chứng về vấn đề và có bằng chứng phương án sẽ hiệu quả. Phỏng vấn và khảo sát cho thấy việc chốt quán mất công, nhưng nhóm vẫn cần thử để biết bạn bè có gửi nhận xét đều đặn và Workflow có thực sự giúp chốt nhanh hơn hay không.
+- Khi chọn Go, mình học được cách gắn quyết định với một điều kiện đo được. Chẳng hạn, nếu sau hai tuần có dưới 50% số bữa ăn được bổ sung nhận xét mới, nhóm sẽ quay về danh sách quán chung và bình chọn.
 
 ### NguyenMinhTriet-2A202603995
 
