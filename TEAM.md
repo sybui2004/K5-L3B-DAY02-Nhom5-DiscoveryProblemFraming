@@ -68,3 +68,34 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Phải mô tả vấn đề mà không gợi sẵn giải pháp: bottleneck v0 ghi "không được lưu lại" bị phản biện là đang chỉ sẵn hướng lưu trữ. Nhóm sửa thành "không tra cứu lại được theo quán", tức nói về khó khăn của người dùng chứ không nói về tính năng.
 - Phản biện giúp bài chặt hơn: câu hỏi "Google Maps và hỏi bạn bè đã đủ chưa" buộc nhóm chỉ ra khoảng trống thật là hai nguồn này không ghép được với nhau, và giữ lại phương án không dùng AI để quay về khi cần.
 - Quyết định nên dựa trên ngưỡng đo được: nhóm chọn Go cho pilot nhỏ kèm ngưỡng dừng cụ thể, thay vì tin vào cảm giác rằng ý tưởng hay.
+
+
+### NguyenMinhTriet-2A202603995
+
+**Phần việc phụ trách:**
+
+- Người chính CP5: vẽ quy trình trước/sau và viết Problem Statement v0.
+- Hỗ trợ CP3 (hội tụ nhóm), CP4 (kiểm chứng, research) và CP6 (mức can thiệp, Problem Statement v1, quyết định).
+
+**Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
+
+- Pitch 3 candidate: #4 tìm phòng trọ thật và còn trống, #7 chia tiền sau chuyến đi nhóm, #11 tìm khung giờ cả nhóm cùng rảnh để họp đồ án. Candidate #4 vào shortlist (24 điểm, thấp nhất) nhưng bị loại vì tin đăng nằm trong nhóm Facebook không có cách lấy chính thống, xác minh cần người đến tận nơi và nhu cầu theo mùa.
+- Phản biện bài của bạn: hỏi Đức về #2 (thầy cô đã nói trọng tâm thì còn cần công cụ gì) và #10 (đã thử ChatGPT chấm IELTS chưa); hỏi Sỹ về #5 (ngân hàng đã có thống kê chi tiêu thì thiếu gì); hỏi Ninh về #12 (hỏi anh chị khóa trước có đủ không).
+- Nhận phản biện: Đức hỏi #4 (hỏi bạn bè hoặc nhờ môi giới có nhanh hơn không); Sỹ hỏi #7 (vì sao không dùng Splitwise) và #11 (Doodle/When2meet còn thiếu gì). Từ đó mình nhận ra cả 3 card đều đã có workaround hoặc công cụ sẵn mà mình chưa chứng minh được khoảng trống.
+- Vẽ quy trình trước/sau (CP5): quy trình hiện tại 7 bước có actor, input, output, thời gian từng bước; quy trình tương lai gồm 3 bước chuẩn bị và 4 bước mỗi lần chốt quán; viết Boundary, phương án quay về và bảng before/after.
+- Viết Problem Statement v0 (CP5) và ghi lại 4 phản biện của AI cùng việc nhóm có đồng ý không. Bản v0 của mình ghi Impact 30–60 phút là số giả định, sau khi có số phỏng vấn nhóm đổi thành 20–30 phút (cặp đôi) và 1–2 ngày (nhóm 4–6 người).
+- Cùng nhóm gom cluster, gạch "App chia tiền nhóm" (#7) khỏi tầng opportunity vì là solution đội lốt, và thảo luận chấm điểm shortlist.
+
+**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
+
+- `group_report.md` mục 4 (quy trình hiện tại, quy trình tương lai, before/after) và mục 5 (Problem Statement v0 cùng phản biện của AI).
+- `group_report.md` mục 2.1 (pitch #4, #7, #11 và các câu phản biện), mục 2.4 (điểm #4 và lý do loại) và mục 7 (bảng thay đổi từ v0 sang v1).
+- Commit của tài khoản [minhtriet061203](https://github.com/minhtriet061203) trên repo nhóm.
+- Báo cáo cá nhân: `report/individual/2A202603995_NguyenMinhTriet.md`.
+
+**Điều mình học được từ phần nhóm:**
+
+- Có pain thật chưa đủ: card phòng trọ của mình bị hỏi về môi giới, bạn bè và nhóm Facebook, và mình chưa có bằng chứng người dùng vẫn gặp khó khăn dù đã có các cách đó. Muốn card đứng được thì phải chỉ ra khoảng trống mà workaround hiện có chưa lấp.
+- Không nên điền số khi chưa đo: bản v0 của mình dùng 30–60 phút là số giả định, còn số phỏng vấn là 20–30 phút với cặp đôi và 1–2 ngày với nhóm 4–6 người. Hai nhóm khác nhau rõ như vậy nên nhóm mới tách actor ở v1.
+- Solution-first lẫn ngay trong câu chữ: mình viết bottleneck là nhận xét của bạn bè "không được lưu lại", và AI chỉ ra câu đó đã gợi sẵn giải pháp lưu trữ. Nhóm sửa thành "không tra cứu lại được theo quán" để nói về khó khăn của người dùng thay vì nói về tính năng.
+- Quy trình trước/sau giúp thấy bottleneck thật: khi ghi thời gian từng bước, vòng lặp bước 3 → 6 hiện ra là chỗ tốn nhiều nhất, và bottleneck của quy trình tương lai chuyển sang việc bạn bè có gửi nhận xét đều đặn không.
