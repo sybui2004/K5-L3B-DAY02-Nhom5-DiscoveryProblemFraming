@@ -145,7 +145,7 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - `group_report.md` mục 2.1 (các dòng pitch #3, #8, #12 và các câu hỏi phản biện do Trịnh Ngọc Ninh hỏi).
 - `group_report.md` mục 3.3 (bảng research), mục 6 (mức can thiệp AI) và mục 7 (Problem Statement v1).
 - Commit của tài khoản [ninhtrinhdev](https://github.com/ninhtrinhdev) trên repo nhóm.
-- Báo cáo cá nhân: `report/individual/2A202603996_TrinhNgocNinh.md`.
+- Báo cáo cá nhân: `report/individual/202603996_TrinhNgocNinh.md`.
 
 **Điều mình học được từ phần nhóm:**
 
