@@ -99,3 +99,36 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Không nên điền số khi chưa đo: bản v0 của mình dùng 30–60 phút là số giả định, còn số phỏng vấn là 20–30 phút với cặp đôi và 1–2 ngày với nhóm 4–6 người. Hai nhóm khác nhau rõ như vậy nên nhóm mới tách actor ở v1.
 - Solution-first lẫn ngay trong câu chữ: mình viết bottleneck là nhận xét của bạn bè "không được lưu lại", và AI chỉ ra câu đó đã gợi sẵn giải pháp lưu trữ. Nhóm sửa thành "không tra cứu lại được theo quán" để nói về khó khăn của người dùng thay vì nói về tính năng.
 - Quy trình trước/sau giúp thấy bottleneck thật: khi ghi thời gian từng bước, vòng lặp bước 3 → 6 hiện ra là chỗ tốn nhiều nhất, và bottleneck của quy trình tương lai chuyển sang việc bạn bè có gửi nhận xét đều đặn không.
+
+### TrinhNgocNinh-2A202603996
+
+**Phần việc phụ trách:**
+
+- Người chính CP4 phần research giải pháp đã có (bảng research có link).
+- Người chính CP6 phần mức can thiệp AI (ma trận, so sánh 4 mức, AI Canvas, hai câu hỏi PAIR) và Problem Statement v1.
+- Hỗ trợ CP3 (pitch, phản biện, gom cluster, chấm điểm).
+
+**Đóng góp cụ thể** (mình đã làm gì, ra sản phẩm gì):
+
+- Pitch 3 candidate: #3 danh sách việc sau họp nhóm đồ án, #8 viết nhận xét khi chấm lab, #12 chọn môn tự chọn. Candidate #3 vào shortlist, được 27 điểm, đứng thứ hai sau #1.
+- Phản biện bài của bạn: hỏi Sỹ về #1 (Google Maps và hỏi nhóm bạn đã đủ chưa, vì sao cần thêm công cụ), hỏi Đức về #6 (gửi CV chung thì tỉ lệ được gọi phỏng vấn thấp hơn bao nhiêu), hỏi Sỹ về #9 (tìm kiếm và ghim tin nhắn có giải quyết được không). Câu hỏi về #1 dẫn tới việc nhóm giữ "danh sách Google Maps chung + poll" làm phương án quay về.
+- Nhận phản biện: Sỹ hỏi #3 (một người ghi biên bản có đủ không), Đức hỏi #8 (bộ nhận xét mẫu có đủ không), Triết hỏi #12 (hỏi anh chị khóa trước có đủ không).
+- Làm bảng research CP4: so sánh Google Maps, Foody, TikTok, Beli và poll trong Messenger/Zalo; ghi mỗi công cụ giải bước nào trong quy trình và còn bỏ trống bước nào.
+- Viết mục mức can thiệp AI ở CP6: đặt bài toán vào ô "mơ hồ cao × phức tạp thấp", so sánh No AI / Rule / Workflow / Agent, điền AI Canvas và trả lời hai câu hỏi PAIR. Mức chọn là Workflow, giữ Rule và No AI làm phương án quay về.
+- Tổng hợp Problem Statement v1 (mục 7) từ Problem Statement v0 của Triết, kết quả kiểm chứng của Sỹ, mục 6 và bộ eval: tách actor, sửa bottleneck, thêm chỉ số hài lòng, thêm AI intervention point, bảng thay đổi v0 → v1 và 5 tiêu chí đánh giá.
+
+**Bằng chứng** (phần nào trong `group_report.md`, file nào trong `report/assets/`, commit nào):
+
+- `group_report.md` mục 2.1 (các dòng pitch #3, #8, #12 và các câu hỏi phản biện do Trịnh Ngọc Ninh hỏi).
+- `group_report.md` mục 3.3 (bảng research), mục 6 (mức can thiệp AI) và mục 7 (Problem Statement v1).
+- Commit của tài khoản [ninhtrinhdev](https://github.com/ninhtrinhdev) trên repo nhóm.
+- Báo cáo cá nhân: `report/individual/2A202603996_TrinhNgocNinh.md`.
+
+**Điều mình học được từ phần nhóm:**
+
+- Câu hỏi phản biện đơn giản có thể làm lung lay cả card: khi Sỹ hỏi "chỉ cần một người ghi biên bản thì có giải quyết được không", mình thấy câu hỏi hợp lý và chưa có câu trả lời đủ thuyết phục. Mình giữ đó là điểm cần kiểm chứng, không cố bảo vệ ý của mình.
+- Research phải tìm ra khoảng trống chứ không chỉ liệt kê tính năng: Beli làm mình bất ngờ vì đã có những tính năng gần với ý tưởng của nhóm. Từ đó mình hiểu cần xác định rõ khoảng trống mà giải pháp của nhóm muốn giải quyết.
+- Nên bắt đầu từ mức đơn giản: ban đầu mình nghiêng về Rule vì nghĩ có thể giải bằng quy trình và công cụ thông thường. Lý do chuyển sang Workflow phải dựa vào kết quả research và kiểm chứng, nên mình ghi rõ đây vẫn là giả định và sẽ quay về Rule nếu pilot cho thấy Rule đủ.
+- Kiểm chứng có thể trái với điều mình tin: mình nghĩ bước tìm quán mới mất công nhất, nhưng survey cho thấy 7/8 người thấy khó nhất là thảo luận và thống nhất lựa chọn trong nhóm.
+- Bất đồng nên được giải bằng bằng chứng: nhóm từng không thống nhất về việc công cụ hiện tại đã đủ giải quyết vấn đề hay chưa. Cuối cùng nhóm dùng kết quả phản biện và kiểm chứng để điều chỉnh phạm vi vấn đề.
+- Nếu làm lại, mình sẽ kiểm chứng giả định sớm hơn: hỏi thêm người dùng và thu thập số liệu thực tế trước khi pitch problem card.
