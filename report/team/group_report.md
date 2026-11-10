@@ -364,24 +364,31 @@ Vì sao:
 
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? | | |
-| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | | |
-| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | | |
-| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | | |
+| **Value** | Người dùng có thật sự cần và sẽ dùng không? | **Thấp** | Mục 3.2: 5/5 người phỏng vấn kể được một lần gần đây mất từ 20 phút hoặc từ 2 vòng gửi link mới chốt được quán; 4/5 người tin nhận xét bạn bè hơn review công khai; 8/8 người survey gặp vấn đề, 6/8 gặp hằng tuần, mức đáng giải quyết 4/5. Research (mục 3.3) cho thấy app như Beli đã đi theo hướng dựa trên bạn bè. Mẫu còn nhỏ (5 + 8 người) |
+| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | **TB** | Đầu ra dễ hiểu và dễ kiểm tra vì có trích dẫn. Nhưng bạn bè phải gửi nhận xét và xác nhận thẻ; nếu phiền thì không ai làm (giả định #3 chưa kiểm chứng) |
+| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | **TB** | Tóm tắt và đề xuất bằng LLM là năng lực có sẵn qua API, không cần huấn luyện mô hình riêng. Rủi ro nằm ở dữ liệu: nhận xét bạn bè chưa có tập trung, vòng bạn bè nhỏ có thể không đủ quán (giả định #3, #4 chưa kiểm chứng) |
+| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | **TB** | Chi phí pilot nhỏ (5 nhóm, vài chục lượt đề xuất). Rủi ro quyền riêng tư khi dùng tin nhắn của bạn bè; chưa có mô hình vận hành và nguồn thu khi mở rộng ra ngoài pilot |
 
 ### 8.2. Kết luận
 
-**Quyết định:** Go / Not Yet / No-Go
+**Quyết định:** **Go** (pilot nhỏ, bán thủ công)
 
-**Lý do:**
+**Lý do:** Không rủi ro nào ở mức Cao. Value ở mức Thấp nhờ kết quả phỏng vấn và khảo sát: người dùng thật sự mất nhiều vòng để chốt quán và tin nhận xét bạn bè hơn review công khai. Usability, Feasibility và Viability ở mức TB, đều xoay quanh một câu hỏi phỏng vấn không trả lời được - bạn bè có chịu gửi nhận xét không - và câu hỏi đó chỉ trả lời được bằng hành vi thật trong pilot. Pilot được kiểm soát: có người kiểm tra ở hai điểm (người viết xác nhận thẻ quán, người rủ duyệt đề xuất), có phương án quay về Rule và No AI, và có ngưỡng dừng rõ ràng. Pilot không xây app nên chi phí nếu thất bại thấp.
 
-**Nếu Go — pilot nhỏ nhất:**
+**Pilot nhỏ nhất:**
 
-**Nếu Not Yet — cần kiểm chứng gì trước:**
+- **Quy mô:** 5 nhóm bạn (gồm cả cặp đôi và nhóm 4–6 người), trong 2 tuần.
+- **Chuẩn bị (tuần 0):** đo baseline bằng timestamp chat của các lần chốt quán gần nhất và hỏi mức hài lòng (có / không) về 5 bữa ăn gần nhất của mỗi nhóm; mỗi nhóm gửi lại nhận xét về quán đã ăn chung (lấy từ tin nhắn cũ, có sự đồng ý của người viết); kiểm tra giả định #4 - mỗi nhóm có từ 10 quán chưa. Dữ liệu nhập tay vào Google Sheet.
+- **Chạy thử:** khi cần chốt quán, người rủ nhập yêu cầu; nhóm lọc bằng bộ lọc của Sheet (Rule), rồi chạy prompt AI thủ công để tóm tắt nhận xét và đề xuất 3 quán kèm trích dẫn. Người rủ duyệt rồi gửi vào chat nhóm, cả nhóm chốt bằng poll. Sau bữa ăn, gửi nhận xét mới.
+- **Đo:** thời gian và số vòng gửi link qua timestamp chat; tỉ lệ đề xuất được chọn; đánh giá hài lòng 1 câu sau bữa ăn; tỉ lệ bữa ăn có nhận xét mới; số lỗi theo 5 tiêu chí đánh giá ở mục 7.
+- **Chưa làm trong pilot:** không xây app, không tự đặt bàn, không lấy dữ liệu tự động từ Messenger/Zalo.
 
-**Nếu No-Go — nên làm gì thay AI:**
+**Ngưỡng dừng:**
 
-**Ngưỡng dừng** (nếu sau … mà … thì quay về …):
+- Nếu ở bước chuẩn bị có nhóm không gom đủ 10 quán đã ăn → loại nhóm đó khỏi pilot; nếu quá nửa số nhóm không đủ → **Not Yet**, xem lại actor (cần vòng bạn bè lớn hơn).
+- Nếu sau 2 tuần dưới 50% bữa ăn có nhận xét mới → quay về **No AI** (danh sách chung + poll).
+- Nếu người rủ phải sửa hoặc bỏ quá 50% đề xuất của AI, hoặc có trích dẫn bịa (vi phạm tiêu chí 1, 3) → quay về **Rule** lọc.
+- Nếu sau 2 tuần thời gian chốt quán không giảm xuống dưới 15 phút → dừng và xem lại problem.
 
 ---
 
