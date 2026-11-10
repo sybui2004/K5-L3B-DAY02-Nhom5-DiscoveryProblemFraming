@@ -191,9 +191,11 @@ Bộ câu hỏi phỏng vấn:
 
 | Công cụ / case / pattern | Link | Giải bước nào trong quy trình? | Điểm mạnh | Khoảng trống / rủi ro | Bài học cho nhóm |
 |---|---|---|---|---|---|
-| | | | | | |
-| | | | | | |
-| | | | | | |
+| Google Maps (rating, danh sách lưu và chia sẻ) | https://www.google.com/maps | Tìm quán theo vị trí, xem giờ mở cửa, lưu quán | Dữ liệu vị trí, giờ mở cửa, đường đi đầy đủ | Rating là của người lạ; danh sách chia sẻ ít ai cập nhật; không gom được nhận xét bạn bè trong tin nhắn | Dùng làm nguồn vị trí và giờ mở cửa, không xây lại phần này |
+| Foody / review ẩm thực Việt Nam | https://www.foody.vn | Tìm quán và đọc review | Nhiều quán Việt Nam, có ảnh và giá | Review của người lạ, có nguy cơ seeding; đúng chỗ đau nhóm muốn tránh | Thêm nguồn review công khai không giải được bài toán tin cậy |
+| TikTok (video review quán) | https://www.tiktok.com | Tìm quán ứng viên | Rất nhiều video ẩm thực, thấy món và không gian, có gắn địa điểm | Review của người lạ. Một nghiên cứu trên 97 influencer hàng đầu ở Mỹ thấy 69,3% video có sản phẩm đồ ăn, đồ uống gắn thương hiệu không ghi rõ quan hệ với nhãn hàng ([JMIR 2025](https://www.jmir.org/2025/1/e60891)); đây là bằng chứng gián tiếp, chưa phải số liệu về video review quán ở Việt Nam | Không cạnh tranh về lượng nội dung, mà về nguồn đáng tin là bạn bè |
+| Beli (app xếp hạng quán ăn theo bạn bè) | https://beliapp.com | Lưu và xếp hạng quán đã ăn, xem quán bạn bè đã đi | Đúng hướng "tin bạn bè hơn người lạ"; cho thấy pattern này có người dùng thật | Chủ yếu phục vụ thị trường Mỹ; người dùng phải tự chấm từng quán trong app riêng, nhận xét trong tin nhắn vẫn không được dùng | Pattern dựa trên bạn bè có cơ sở; khoảng trống còn lại là lấy nhận xét từ chỗ người dùng đã viết (tin nhắn) thay vì bắt họ nhập lại |
+| Poll trong Messenger / Zalo | (tính năng có sẵn trong app chat) | Bước chốt quán trong nhóm | Ai cũng biết dùng, không cần cài thêm | Chỉ giúp chốt giữa các lựa chọn đã có, không giúp tìm lựa chọn đáng tin | Giữ poll cho bước chốt; giải pháp chỉ cần tập trung vào bước tạo lựa chọn |
 
 ---
 
@@ -293,38 +295,43 @@ Phản biện nhận được (từ AI — Claude, theo prompt phản biện tro
 
 ### 6.1. Ma trận độ mơ hồ × độ phức tạp
 
-Bài của nhóm nằm ở ô:
+Bài của nhóm nằm ở ô: **Độ mơ hồ cao × độ phức tạp thấp** → Workflow có AI ở một vài bước.
 
 Vì sao:
+
+- **Mơ hồ cao:** "quán hợp" không có một đáp án đúng duy nhất; nhận xét của bạn bè là văn bản tự do ("ngon nhưng hơi ồn, nên gọi lẩu"), Rule không đọc được.
+- **Phức tạp thấp:** các bước cố định và biết trước (lọc → đề xuất → chốt), chỉ 2 nguồn dữ liệu (nhận xét bạn bè; vị trí và giờ mở cửa), không cần AI tự quyết bước tiếp theo.
 
 ### 6.2. So sánh 4 mức
 
 | Mức | Phương án cho bài của nhóm | Đủ khi nào | Rủi ro | Chọn? |
 |---|---|---|---|---|
-| **No AI** (sửa quy trình) | | | | |
-| **Rule** | | | | |
-| **Workflow** | | | | |
-| **Agent** | | | | |
+| **No AI** (sửa quy trình) | Danh sách Google Maps hoặc Sheet chung của nhóm bạn + mẫu ghi nhận xét (điểm, giá, món nên gọi) + poll khi chốt | Mọi người chịu ghi đúng mẫu sau mỗi bữa ăn | Ít ai ghi đều; nhận xét trong tin nhắn vẫn bị mất | Không - giữ làm phương án quay về |
+| **Rule** | Lọc quán bạn bè đã ăn theo khu vực, giá, giờ mở cửa, điểm trung bình | Dữ liệu đã có cấu trúc, yêu cầu đơn giản | Không đọc được nhận xét tự do, không hiểu yêu cầu kiểu "chỗ yên tĩnh, có món cay" | Một phần - là bước lọc trong Workflow và là fallback |
+| **Workflow** | Rule lọc + AI tóm tắt nhận xét thành thẻ quán + AI đề xuất 3 quán kèm trích dẫn; con người xác nhận và chốt | Có từ 3 quán phù hợp sau khi lọc | AI tóm tắt sai ý, gán sai trích dẫn, bịa thông tin | **Chọn** |
+| **Agent** | AI tự tìm trên web và TikTok, tự hỏi gu từng người, tự đặt bàn | Cần xử lý nhiều nguồn mở, nhiều bước không biết trước | Dính lại review seeding; khó kiểm soát; cần quyền gửi tin và đặt bàn thay người dùng; chi phí xây dựng và vận hành cao hơn nhiều so với giá trị tăng thêm | Không |
 
-**Mức chọn:**
+**Mức chọn:** Workflow.
 
-**Vì sao không chọn mức đơn giản hơn:**
+**Vì sao không chọn mức đơn giản hơn:** Nhận xét đáng tin của bạn bè hiện ở dạng tin nhắn tự do (snapshot 1: "nhắn Messenger hỏi một người bạn"), và snapshot 1 cho thấy cả việc lưu video TikTok cũng "ít khi xem lại" - người dùng không duy trì việc lưu có cấu trúc. Bắt mọi người ghi theo mẫu (No AI / Rule) là đúng chỗ người dùng hay bỏ qua, nên cần AI đọc văn bản tự do và ghép với yêu cầu bằng ngôn ngữ tự nhiên. Đây vẫn là giả định: nếu pilot cho thấy nhóm bạn chịu ghi theo mẫu, nhóm sẽ quay về Rule.
+
+**Vì sao không chọn Agent:** Các bước đã biết trước, không có bước nào cần AI tự quyết đi đâu tiếp. Agent tự tìm trên web sẽ kéo lại chính nguồn review công khai mà người dùng không tin.
 
 ### 6.3. AI Canvas rút gọn
 
 | Thành phần | Nội dung |
 |---|---|
-| **Prediction** — AI dự đoán / tạo ra gì? | |
-| **Judgment** — con người cân nhắc, quyết định gì? | |
-| **Action** — hành động cuối cùng là gì, ai làm? | |
-| **Outcome** — đo kết quả bằng gì? | |
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | |
-| **Feedback** — lấy phản hồi ở đâu để cải thiện? | |
+| **Prediction** — AI dự đoán / tạo ra gì? | (1) Thẻ quán tóm tắt từ nhận xét tự do: khu vực, giá, món nên gọi, khen/chê, trích nguyên văn. (2) 3 quán hợp yêu cầu nhất trong danh sách đã lọc, kèm lý do và trích dẫn |
+| **Judgment** — con người cân nhắc, quyết định gì? | Người viết nhận xét quyết định thẻ có đúng ý mình không. Người rủ cân nhắc 3 đề xuất có hợp cả nhóm không (ngân sách, ai kiêng gì, đã ăn gần đây chưa) |
+| **Action** — hành động cuối cùng là gì, ai làm? | Người rủ gửi lựa chọn vào nhóm; cả nhóm chốt bằng poll; người dùng tự đặt bàn |
+| **Outcome** — đo kết quả bằng gì? | Thời gian chốt, số vòng gửi link, tỉ lệ hài lòng sau bữa ăn, tỉ lệ đề xuất được chọn |
+| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Nhận xét bạn bè đã xác nhận (**chưa có tập trung**, đang rải rác trong tin nhắn - phải nhờ bạn bè gửi lại); vị trí và giờ mở cửa (có trên Google Maps, nhập tay khi pilot); yêu cầu của lần đi (người rủ nhập) |
+| **Feedback** — lấy phản hồi ở đâu để cải thiện? | Quán nào được chốt hoặc bị bỏ qua; đánh giá 1 câu sau bữa ăn; số lần người viết sửa thẻ quán |
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng:
-- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào:
+- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? → **Augment.** Bằng chứng gián tiếp từ kiểm chứng: người dùng hiện vẫn hỏi bạn bè và dùng poll để cả nhóm cùng quyết (snapshot 2; 3/8 người survey dùng poll), tức là muốn giữ quyền chốt. Chưa hỏi trực tiếp, sẽ theo dõi trong pilot qua tỉ lệ người rủ sửa đề xuất. Thiết kế: AI chỉ đề xuất 3 quán, con người chốt.
+- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? → **Báo nhầm tệ hơn**: đề xuất một quán dở, hoặc ghi "bạn A khen" trong khi A chê, sẽ phá đúng thứ sản phẩm hứa hẹn là sự tin cậy (snapshot 1: chọn quán theo review, đến nơi thấy "không ngon như review"). Bỏ sót một quán hợp chỉ làm mất một lựa chọn. Thiết kế: mọi đề xuất bắt buộc kèm trích nguyên văn và tên người nhận xét; không đủ bằng chứng thì không đề xuất; ưu tiên ít đề xuất mà chắc hơn đủ 3 mà sai.
 
 ---
 
@@ -332,29 +339,38 @@ Vì sao:
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** | |
-| **AI intervention point** | |
-| **Mức chọn** | No AI / Rule / Workflow / Agent |
-| **Rủi ro & người kiểm tra** | |
+| **Actor** | Người đứng ra rủ và chọn quán, 18–30 tuổi, đi ăn ngoài từ 1 lần/tuần. Tách hai loại: **cặp đôi** (2 người, chốt trong một buổi tối) và **nhóm bạn 4–6 người** (kéo dài nhiều ngày, cần poll) |
+| **Quy trình** | Từ lúc có người rủ đi ăn đến lúc chốt một quán: hỏi ý → tìm trên TikTok, Google Maps, Foody → hỏi riêng bạn bè → gửi link vào chat → thảo luận → chốt |
+| **Bottleneck** | Vòng "tìm → gửi link → cả nhóm chê → tìm lại" lặp 1–3 vòng, vì các lựa chọn đưa ra không có nguồn mà cả nhóm cùng tin. Nhận xét của bạn bè đã ăn nằm trong tin nhắn riêng, không tra cứu lại được theo quán |
+| **Impact** | Cặp đôi: 20–30 phút mỗi lần, 1–2 lần/tuần. Nhóm 4–6 người: có thể kéo 1–2 ngày và hơn 40 tin nhắn, khoảng 2 lần/tháng (snapshot 1, 2; là số người dùng tự kể, chưa đo bằng timestamp chat). Chọn sai quán thì tốn tiền và mất vui |
+| **Success Metric** (baseline → target, cách đo) | **(1) Tốc độ**, báo cáo riêng cho cặp đôi và nhóm 4–6 người. Baseline: thời gian từ tin nhắn rủ đầu tiên đến khi chốt và số vòng gửi link, đo ở tuần 0 bằng timestamp chat của các lần chốt gần nhất (số tự kể hiện có: 20–30 phút với cặp đôi, 1–2 ngày với nhóm). Target: dưới 15 phút, tối đa 1 vòng gửi link. Cách đo: timestamp chat trong 2 tuần pilot. **(2) Chất lượng**: tỉ lệ bữa ăn được đánh giá hài lòng (có / không). Baseline: hỏi về 5 bữa ăn gần nhất của mỗi nhóm ở tuần 0. Target: không thấp hơn baseline. Cách đo: câu hỏi 1 câu sau mỗi bữa ăn trong pilot |
+| **Boundary** | AI chỉ dùng nhận xét của bạn bè đã xác nhận, không dùng review công khai hay TikTok. AI không tự gửi tin vào nhóm, không tự chốt, không tự đặt bàn. AI không thêm món, giá hay nhận xét không có trong input. Nhận xét của ai chỉ hiển thị trong nhóm người đó đồng ý chia sẻ. HITL: người viết nhận xét xác nhận thẻ quán trước khi thẻ được dùng; người rủ duyệt đề xuất trước khi gửi vào nhóm |
+| **AI intervention point** | Hai bước trong quy trình tương lai (mục 4.2): **bước b** - AI tóm tắt nhận xét tự do của bạn bè thành thẻ quán; **bước 3** - AI đề xuất 3 quán từ danh sách đã được Rule lọc, kèm lý do và trích nhận xét bạn bè |
+| **Mức chọn** | **Workflow** (Rule lọc + AI ở 2 bước + con người xác nhận và chốt). Lý do ở mục 6.2 |
+| **Rủi ro & người kiểm tra** | AI tóm tắt sai ý bạn bè → người viết nhận xét xác nhận thẻ. AI đề xuất sai, gán sai trích dẫn hoặc bịa thông tin → người rủ duyệt trước khi gửi; mọi đề xuất phải kèm trích nguyên văn và tên người viết. Dữ liệu thưa (dưới 3 quán sau khi lọc) → hiện danh sách lọc bằng Rule. Lộ nhận xét riêng tư → chỉ hiển thị trong nhóm người viết đồng ý chia sẻ. AI ngừng hoạt động → danh sách Google Maps chung + poll |
 
 **Thay đổi so với v0 và lý do:**
 
 | Trường | v0 | v1 | Vì sao đổi |
 |---|---|---|---|
-| | | | |
+| Actor | Gộp cặp đôi và nhóm bạn | Tách cặp đôi và nhóm 4–6 người | Phỏng vấn cho thấy hai quy trình khác nhau rõ: cặp đôi chốt trong một buổi tối, nhóm kéo nhiều ngày và cần poll (mục 3.2) |
+| Bottleneck | Bước tìm và thảo luận lặp vì review khó tin; nhận xét bạn bè "không được lưu lại" | Vòng tìm → gửi link → chê → tìm lại; nhận xét bạn bè "không tra cứu lại được" | Survey: bước mất công nhất là thảo luận trong nhóm (7/8), không phải bước tìm. "Không được lưu lại" bị phản biện là đang gợi ý sẵn giải pháp lưu trữ (mục 5) |
+| Impact | 30–60 phút mỗi lần (giả định) | 20–30 phút với cặp đôi; 1–2 ngày và hơn 40 tin nhắn với nhóm | Thay số đoán bằng số từ phỏng vấn (snapshot 1, 2); vẫn cần đo lại bằng timestamp chat |
+| Success Metric | Chỉ đo thời gian chốt và số vòng gửi link | Thêm tỉ lệ hài lòng sau bữa ăn; báo cáo riêng theo từng loại actor | Phản biện ở mục 5: chốt nhanh mà quán dở thì không đạt mục tiêu |
+| Boundary | Không dùng review công khai; không tự chốt, đặt bàn, gửi tin; không đưa nhận xét ra ngoài nhóm | Thêm: AI không thêm món, giá hay nhận xét không có trong input; thêm điểm kiểm tra là người viết xác nhận thẻ quán | Mục 6.4: lỗi báo nhầm (bịa, gán sai trích dẫn) tệ hơn bỏ sót, nên cần chặn ngay ở bước tóm tắt |
+| AI intervention point, Mức chọn, Rủi ro & người kiểm tra | Chưa có | Bước b và bước 3; Workflow; hai điểm kiểm tra của con người | Trường mới ở v1, lấy từ quy trình tương lai (mục 4.2) và so sánh 4 mức (mục 6.2) |
 
 **Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
 
 | # | Tiêu chí | Đạt khi | Không đạt khi |
 |---:|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
+| 1 | Trích dẫn đúng | Mỗi quán / mỗi ý có ít nhất 1 trích nguyên văn khớp nhận xét gốc và đúng người viết | Có trích dẫn không tồn tại trong input hoặc gán sai người |
+| 2 | Đúng ràng buộc | Mọi quán đề xuất khớp khu vực, ngân sách và đang mở cửa vào giờ hẹn | Có quán vượt ngân sách, ngoài khu vực hoặc đóng cửa |
+| 3 | Không bịa | Mọi món, giá, nhận xét trong đầu ra đều có trong input | Có món, giá hoặc nhận xét không xuất hiện trong input |
+| 4 | Giữ ý chê | Giữ cả ý khen và ý chê của người viết | Chỉ giữ ý khen, bỏ ý chê |
+| 5 | Biết từ chối | Dưới 3 quán phù hợp thì nói rõ và chuyển sang danh sách Rule | Lấp chỗ trống bằng quán không phù hợp |
+
+**Ngưỡng để đưa vào pilot** (chạy bộ eval 10 case trong [cp6-eval-set.md](../assets/cp6-eval-set.md), mỗi case 3 lần): tiêu chí 1 và 3 không được có lần nào không đạt, vì đây là lỗi báo nhầm (mục 6.4); tiêu chí 2, 4, 5 đạt tối thiểu 90% số lần chấm.
 
 ---
 
