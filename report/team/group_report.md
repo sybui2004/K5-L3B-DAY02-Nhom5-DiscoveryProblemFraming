@@ -201,39 +201,70 @@ Bộ câu hỏi phỏng vấn:
 
 ### 4.1. Quy trình hiện tại
 
-Sơ đồ (ASCII, Mermaid hoặc link ảnh trong `report/assets/`):
+Sơ đồ:
 
 ```text
+HIỆN TẠI — 30–60 phút mỗi lần (giả định, chưa đo)
 
+[1. Người rủ hỏi "ăn gì?" trong chat]
+→ [2. Người kia / cả nhóm trả lời "gì cũng được"]
+→ [3. Người rủ lướt TikTok, Google Maps, Foody]        ← bottleneck: nguồn khó tin
+→ [4. Người rủ nhắn riêng hỏi bạn hay đi ăn]          ← bottleneck: phải hỏi lại mỗi lần
+→ [5. Gửi 2–5 link vào chat]
+→ [6. Cả nhóm thảo luận, chê]  ──(không chốt được)──→ quay lại bước 3 (1–3 vòng)
+→ [7. Chốt quán, gửi địa chỉ]
 ```
 
 | Bước | Actor | Input | Output | Thời gian / tần suất | Ghi chú |
 |---:|---|---|---|---|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Người rủ | Nhu cầu đi ăn | Câu hỏi trong chat | 1 phút, 1–2 lần/tuần | |
+| 2 | Người kia / cả nhóm | Câu hỏi | "Gì cũng được" hoặc ý chung chung | 5–10 phút chờ | Không ai nói rõ gu |
+| 3 | Người rủ | Khu vực, ngân sách trong đầu | Vài quán ứng viên | 10–20 phút | Review công khai, có seeding |
+| 4 | Người rủ → một người bạn | Câu hỏi "quán nào ngon" | Gợi ý trong tin nhắn riêng | Chờ 5–30 phút | Câu trả lời bị trôi, lần sau phải hỏi lại |
+| 5 | Người rủ → nhóm | Quán ứng viên | 2–5 link trong chat | 2 phút | Handoff sang cả nhóm |
+| 6 | Cả nhóm | Các link | Đồng ý hoặc chê | 10–30 phút, lặp 1–3 vòng | Chê thì quay lại bước 3 |
+| 7 | Người rủ | Quán được đồng ý | Địa chỉ, giờ hẹn | 2 phút | |
 
-**Bottleneck chính:**
+**Bottleneck chính:** Bước 3–6 lặp lại nhiều vòng vì nguồn ở bước 3 khó tin, còn nhận xét đáng tin ở bước 4 nằm trong tin nhắn riêng, không tra cứu lại được.
 
 ### 4.2. Quy trình tương lai
 
-Ghi rõ bước nào **Rule**, bước nào **AI**, bước nào **con người**, **boundary** ở đâu, **phương án quay về** khi AI sai.
-
 ```text
+TƯƠNG LAI — dưới 15 phút mỗi lần (kỳ vọng)
 
+Chuẩn bị (sau mỗi bữa ăn, một lần cho mỗi quán):
+[a. Bạn bè gửi nhận xét ngắn: tin nhắn hoặc 1–2 câu]     ← CON NGƯỜI
+→ [b. AI tóm tắt thành thẻ quán: khu vực, giá, món nên gọi,
+       khen/chê, kèm trích nguyên văn]                     ← AI
+→ [c. Người viết nhận xét xác nhận thẻ đúng ý mình]       ← CON NGƯỜI (thẻ chưa xác nhận không được dùng)
+
+Mỗi lần chốt quán:
+[1. Người rủ nhập yêu cầu: khu vực, ngân sách, số người, món muốn]   ← CON NGƯỜI
+→ [2. Lọc quán bạn bè đã ăn theo khu vực, giá, giờ mở cửa]           ← RULE
+→ [3. AI đề xuất 3 quán hợp yêu cầu, mỗi quán kèm lý do và
+       trích nhận xét bạn bè]                                         ← AI
+→ [4. Người rủ duyệt rồi gửi vào nhóm, cả nhóm chốt bằng poll]      ← CON NGƯỜI
+
+Boundary:
+- AI chỉ dùng nhận xét của bạn bè đã xác nhận, không dùng review công khai hay TikTok
+- AI không tự gửi tin vào nhóm, không tự chốt, không tự đặt bàn
+- AI không thêm món, giá hay nhận xét không có trong input
+- Nhận xét của ai chỉ hiển thị trong nhóm người đó đồng ý chia sẻ
+
+Phương án quay về:
+- Rule lọc ra dưới 3 quán, hoặc người rủ thấy đề xuất sai → hiện danh sách lọc bằng Rule, người rủ tự chọn
+- AI ngừng hoạt động → dùng danh sách Google Maps chung của nhóm + poll (No AI)
 ```
 
 ### 4.3. Before / after
 
 | Chỉ số | Trước | Sau (kỳ vọng) | Ghi chú |
 |---|---:|---:|---|
-| Số bước | | | |
-| Tổng thời gian | | | |
-| Số bước thủ công | | | |
-| Bottleneck chính | | | |
-| Rủi ro mới phát sinh | | | |
+| Số bước | 7, lặp 1–3 vòng | 4, một vòng | Chưa tính 3 bước chuẩn bị sau bữa ăn (mỗi quán một lần) |
+| Tổng thời gian | 30–60 phút | dưới 15 phút | Số trước là giả định, cần đo bằng timestamp chat |
+| Số bước thủ công | 7 | 2 (nhập yêu cầu, duyệt và chốt) | Thêm 2 bước thủ công khi chuẩn bị: gửi nhận xét, xác nhận thẻ |
+| Bottleneck chính | Tìm nguồn đáng tin và hỏi lại bạn bè | Bạn bè có gửi nhận xét đều đặn không | Bottleneck chuyển sang đầu vào dữ liệu |
+| Rủi ro mới phát sinh | | AI tóm tắt sai ý bạn bè; dữ liệu thưa; lộ nhận xét riêng tư | Xử lý bằng bước xác nhận thẻ và quyền chia sẻ |
 
 ---
 
@@ -241,18 +272,22 @@ Ghi rõ bước nào **Rule**, bước nào **AI**, bước nào **con người*
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | |
+| **Actor** | Cặp đôi và nhóm bạn 18–30 tuổi đi ăn ngoài từ 1 lần/tuần, cụ thể là người đứng ra rủ và chọn quán |
+| **Quy trình** | Từ lúc có người rủ đi ăn đến lúc chốt một quán: hỏi ý → tìm trên TikTok, Google Maps, Foody → hỏi riêng bạn bè → gửi link vào chat → thảo luận → chốt |
+| **Bottleneck** | Bước tìm và thảo luận lặp 1–3 vòng vì review công khai khó tin (seeding), còn nhận xét của bạn bè đã ăn nằm trong tin nhắn riêng, không được lưu lại |
+| **Impact** | Mỗi lần chốt mất 30–60 phút và nhiều lượt chat (giả định, chưa đo); chọn sai quán thì tốn tiền và mất vui; lặp lại 1–2 lần/tuần |
+| **Success Metric** (baseline → target, cách đo) | Baseline: thời gian từ tin nhắn rủ đầu tiên đến khi chốt và số vòng gửi link, đo bằng timestamp chat của 10 lần chốt gần nhất ở 5 nhóm (giả định 30–60 phút, 2–3 vòng). Target: dưới 15 phút, tối đa 1 vòng. Cách đo: timestamp chat trong 2 tuần pilot |
+| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | Không dùng review công khai làm nguồn; không tự chốt, tự đặt bàn hay gửi tin thay người dùng; không đưa nhận xét của ai ra ngoài nhóm nếu chưa đồng ý. HITL: người dùng xem nguồn của mọi gợi ý trước khi gửi vào nhóm |
 
-Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng ý không:
+Phản biện nhận được (từ AI — Claude, theo prompt phản biện trong worksheet) và nhóm có đồng ý không:
 
--
+- "Impact 30–60 phút là số đoán, chưa đo." → Đồng ý. Ghi rõ là giả định; đo bằng timestamp chat ở bước kiểm chứng tiếp theo.
+- "Actor gộp cặp đôi và nhóm 4–6 người, hai quy trình có thể khác nhau." → Đồng ý một phần. Giữ cả hai trong v0, nhưng tách metric theo từng loại; thu hẹp nếu phỏng vấn cho thấy khác nhiều.
+- "Bottleneck ghi 'không được lưu lại' đang gợi ý giải pháp lưu trữ." → Đồng ý. Sửa ở v1 thành "không tra cứu lại được".
+- "Success Metric chỉ đo tốc độ, không đo chất lượng: chốt nhanh mà quán dở thì không đạt mục tiêu." → Đồng ý. Thêm tỉ lệ hài lòng sau bữa ăn ở v1.
 
 ---
+
 
 ## 6. Mức can thiệp AI (CP6)
 
